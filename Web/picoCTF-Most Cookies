@@ -1,1 +1,42 @@
+#Most Cookies
+##Challenge Details
+<img src="/Pictures/Screenshots/picoCtf_Most_cookies.png" alt="Most Cookies"/>
+---
+<a href="https://play.picoctf.org/practice/challenge/177?category=1&page=2">link to the challenge</a>
+##Solution
 
+after analyzing the `server.py` file. i found that these two peace of code are so important
+```
+def search():
+	if "name" in request.form and request.form["name"] in cookie_names:
+		resp = make_response(redirect("/display"))
+		session["very_auth"] = request.form["name"]
+		return resp
+	else:
+		message = "That doesn't appear to be a valid cookie."
+		category = "danger"
+		flash(message, category)
+		resp = make_response(redirect("/"))
+		session["very_auth"] = "blank"
+		return resp
+```
+
+```
+def flag():
+	if session.get("very_auth"):
+		check = session["very_auth"]
+		if check == "admin":
+			resp = make_response(render_template("flag.html", value=flag_value, title=title))
+			return resp
+		flash("That is a cookie! Not very special though...", "success")
+		return render_template("not-flag.html", title=title, cookie_name=session["very_auth"])
+	else:
+		resp = make_response(redirect("/"))
+		session["very_auth"] = "blank"
+		return resp
+
+```  
+-The first one is about the secret key 
+-The second one is about the flag
+
+So inorder to get the secret key it's clear that we can found it in the above list 
