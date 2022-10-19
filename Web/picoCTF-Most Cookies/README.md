@@ -43,8 +43,8 @@ def flag():
 		return resp
 
 ```  
--The first one is about the secret key 
--The second one is about the flag
+**-The first one is about the secret key **
+**-The second one is about the flag **
 
 So in order to get the secret key it's clear that we can find it in the list 'cookie_names' in [`server.py`](https://github.com/Wise-Cpt/CTF-Writeups/blob/main/Web/picoCTF-Most%20Cookies/server.py). We can put the words in wordlist to use it later to brute force the secret key.
 lets call the python script with `script.py` and the wordlist with `wordlist.txt`
