@@ -19,10 +19,8 @@ def search():
 		return resp
 	else:
 		message = "That doesn't appear to be a valid cookie."
-		category = "danger"![picoCtf_Most_cookies](https://user-images.githubusercontent.com/96666980/196553894-69cbe908-0420-4175-92a4-aea8a2f8a676.png)
-
-		flash(message, category)![picoCtf_Most_cookies](https://user-images.githubusercontent.com/96666980/196553873-cee0e4ba-adbe-48c9-8deb-e16a8b0cbfef.png)
-
+		category = "danger"
+		flash(message, category)
 		resp = make_response(redirect("/"))
 		session["very_auth"] = "blank"
 		return resp
